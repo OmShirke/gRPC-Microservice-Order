@@ -1,37 +1,38 @@
-# Build Stage
+# Use a Golang image for building the application
 FROM golang:1.23-alpine AS build
 
-# Install build dependencies
+# Install necessary dependencies
 RUN apk --no-cache add gcc g++ make ca-certificates
 
 # Set the working directory inside the container
-WORKDIR /go/src/github.com/OmShirke/gRPC-Microservice-Order
+WORKDIR /app
 
-# Copy dependency files
-COPY go.mod go.sum ./
+# Copy go.mod and go.sum
+COPY gRPC-Order-service/go.mod gRPC-Order-service/go.sum ./
 
-# Download dependencies
-RUN go mod download
+# Download the Go modules dependencies (optional, but useful for syncing)
+RUN GO111MODULE=on go mod download
 
-# Copy vendor and service-specific files
-COPY vendor vendor
-COPY order order
+# Ensure the dependencies are in sync
+RUN GO111MODULE=on go mod tidy
 
-# Build the Go application
-RUN GO111MODULE=on go build -mod vendor -o /go/bin/app ./order/cmd/order
+# Copy the source code
+COPY gRPC-Order-service/ ./
 
-# Runtime Stage
+# Build the application binary
+RUN go build -o /app/bin/order ./cmd/order
+
+# Final stage: create a smaller image to run the application
 FROM alpine:3.11
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /usr/bin
 
-# Copy the binary from the build stage
-COPY --from=build /go/bin/ .
+# Copy the compiled binary from the build stage
+COPY --from=build /app/bin/order .
 
-# Expose the service port
+# Expose the port your application runs on
 EXPOSE 8080
 
-# Run the application
-CMD ["app"]
-
+# Command to run the application
+CMD ["./order"]
