@@ -34,16 +34,16 @@ func (r *postgresRepo) Close() {
 }
 
 func (r *postgresRepo) PutOrder(ctx context.Context, o Order) (err error) {
-	tx, err := r.db.BeginTx(ctx, nil)
+	tx, err := r.db.BeginTx(ctx, nil) // used to start a new database transaction
 	if err != nil {
 		return err
 	}
 	defer func() {
 		if err != nil {
-			tx.Rollback()
+			tx.Rollback() // undoing all the changes made during the current transaction
 			return
 		}
-		err = tx.Commit()
+		err = tx.Commit() //make the changes permanent in the database
 	}()
 	tx.ExecContext(
 		ctx,
@@ -57,7 +57,7 @@ func (r *postgresRepo) PutOrder(ctx context.Context, o Order) (err error) {
 		return
 	}
 
-	stmt, _ := tx.PrepareContext(ctx, pq.CopyIn("order_products", "order_id", "product_id", "quantity"))
+	stmt, _ := tx.PrepareContext(ctx, pq.CopyIn("order_products", "order_id", "product_id", "quantity")) // used to prepare a copy operation for bulk inserts into a PostgreSQL table
 	for _, p := range o.Products {
 		_, err = stmt.ExecContext(ctx, o.ID, p.ID, p.Quantity)
 		if err != nil {
@@ -133,16 +133,14 @@ func (r *postgresRepo) GetOrdersForAccount(ctx context.Context, accountID string
 	}
 
 	// Add last order (or first :D)
-	if lastOrder != nil {
-		newOrder := Order{
-			ID:         lastOrder.ID,
-			AccountID:  lastOrder.AccountID,
-			CreatedAt:  lastOrder.CreatedAt,
-			TotalPrice: lastOrder.TotalPrice,
-			Products:   products,
-		}
-		orders = append(orders, newOrder)
+	newOrder := Order{
+		ID:         lastOrder.ID,
+		AccountID:  lastOrder.AccountID,
+		CreatedAt:  lastOrder.CreatedAt,
+		TotalPrice: lastOrder.TotalPrice,
+		Products:   products,
 	}
+	orders = append(orders, newOrder)
 
 	if err = rows.Err(); err != nil {
 		return nil, err
