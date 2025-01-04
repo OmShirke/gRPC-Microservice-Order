@@ -1,5 +1,5 @@
 # gRPC-Microservice-Order
-`Overview`<br>
+<h2>Overview</h2><br>
 The gRPC-Microservice-Order is a standalone microservice designed to handle order-related operations in a distributed system. It is built using Go (Golang) with gRPC for communication, adhering to modern microservice principles for scalability and performance.
 
 Features
@@ -22,7 +22,7 @@ Project Structure
 
 # Installation and Setup
 
-`Prerequisites`<br>
+<h2>Prerequisites</h2><br>
 Go (version 1.20+ recommended)<br>
 Docker and Docker Compose<br>
 Protobuf Compiler (for .proto file generation)<br>
