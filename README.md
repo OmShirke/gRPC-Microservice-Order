@@ -8,7 +8,7 @@ Features
 3. Designed with modularity and scalability in mind.
 4. Includes PostgreSQL integration for persistent storage.
 
-<h2>Project Structure</h2>
+# Project Structure
 `cmd/catalog`: Contains the main entry point for the microservice.<br>
 `pb`: Compiled protobuf files used for gRPC communication.<br>
 `repo.go`: Repository layer for interacting with the database.<br>
