@@ -15,23 +15,16 @@ Go (version 1.20+ recommended)
 Docker and Docker Compose
 Protobuf Compiler (for .proto file generation)
 
-
-Steps to Run Locally
-
-<h2>Clone this repo</h2>
+<h2>Clone this repo:</h2>
 git clone https://github.com/OmShirke/gRPC-Microservice-Order.git
 cd gRPC-Microservice-Order
-<br>
-
 
 <h2>Build the Docker images:</h2>
 docker build -t grpc-order-service -f app.dockerfile .
 docker build -t postgres-db -f db.dockerfile .
 
-
 <h2>Start the services:</h2>
 docker-compose up
-
 
 <h2>Generate protobuf files if needed:</h2>
 protoc --go_out=. --go-grpc_out=. order.proto
