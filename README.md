@@ -32,7 +32,7 @@ git clone https://github.com/OmShirke/gRPC-Microservice-Order.git<br>
 cd gRPC-Microservice-Order<br>
 
 <h2>Build the Docker images:</h2>
-docker build -t grpc-order-service -f app.dockerfile .<br><br>
+docker build -t grpc-order-service -f app.dockerfile .<br>
 docker build -t postgres-db -f db.dockerfile .<br>
 
 <h2>Start the services:</h2>
