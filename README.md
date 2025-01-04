@@ -8,16 +8,17 @@ Features
 3. Designed with modularity and scalability in mind.
 4. Includes PostgreSQL integration for persistent storage.
 
-Project Structure<br>
-cmd/order: Contains the main entry point for the microservice.<br>
-pb: Compiled protobuf files used for gRPC communication.<br>
-repo.go: Repository layer for interacting with the database.<br>
-server.go: gRPC server implementation.<br>
-service.go: Business logic layer.<br>
-client.go: gRPC client for communication with other microservices.<br>
-app.dockerfile: Dockerfile to build and deploy the microservice.<br>
-db.dockerfile: Dockerfile to set up the PostgreSQL database.<br>
-up.sql: SQL script for database initialization and schema setup.<br>
+Project Structure
+cmd/catalog: Contains the main entry point for the microservice.
+pb: Compiled protobuf files used for gRPC communication.
+repo.go: Repository layer for interacting with the database.
+server.go: gRPC server implementation.
+service.go: Business logic layer.
+client.go: gRPC client for communication with other microservices.
+app.dockerfile: Dockerfile to build and deploy the microservice.
+db.dockerfile: Dockerfile to set up the PostgreSQL database.
+up.sql: SQL script for database initialization and schema setup.
+
 
 # Installation and Setup
 
