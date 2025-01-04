@@ -1,5 +1,5 @@
 # gRPC-Microservice-Order
-Overview<br>
+`Overview`
 The gRPC-Microservice-Order is a standalone microservice designed to handle order-related operations in a distributed system. It is built using Go (Golang) with gRPC for communication, adhering to modern microservice principles for scalability and performance.
 
 Features
@@ -9,15 +9,15 @@ Features
 4. Includes PostgreSQL integration for persistent storage.
 
 Project Structure
-cmd/catalog: Contains the main entry point for the microservice.
-pb: Compiled protobuf files used for gRPC communication.
-repo.go: Repository layer for interacting with the database.
-server.go: gRPC server implementation.
-service.go: Business logic layer.
-client.go: gRPC client for communication with other microservices.
-app.dockerfile: Dockerfile to build and deploy the microservice.
-db.dockerfile: Dockerfile to set up the PostgreSQL database.
-up.sql: SQL script for database initialization and schema setup.
+`cmd/catalog`: Contains the main entry point for the microservice.
+`pb`: Compiled protobuf files used for gRPC communication.
+`repo.go`: Repository layer for interacting with the database.
+`server.go`: gRPC server implementation.
+`service.go`: Business logic layer.
+`client.go`: gRPC client for communication with other microservices.
+`app.dockerfile`: Dockerfile to build and deploy the microservice.
+`db.dockerfile`: Dockerfile to set up the PostgreSQL database.
+`up.sql`: SQL script for database initialization and schema setup.
 
 
 # Installation and Setup
