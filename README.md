@@ -18,24 +18,21 @@ Protobuf Compiler (for .proto file generation)
 
 Steps to Run Locally
 
-<h3>Clone this repo</h3>
+<h2>Clone this repo</h2>
 
 git clone https://github.com/OmShirke/gRPC-Microservice-Order.git
 cd gRPC-Microservice-Order
 
 
-Build the Docker images:
-
+<h2>Build the Docker images:</h2>
 docker build -t grpc-order-service -f app.dockerfile .
 docker build -t postgres-db -f db.dockerfile .
 
 
-Start the services:
-
+<h2>Start the services:</h2>
 docker-compose up
 
 
-Generate protobuf files if needed:
-
+<h2>Generate protobuf files if needed:</h2>
 protoc --go_out=. --go-grpc_out=. order.proto
 Access the gRPC server at localhost:<port> (replace <port> with your server's port).
