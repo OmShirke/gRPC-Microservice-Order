@@ -18,7 +18,8 @@ Protobuf Compiler (for .proto file generation)
 
 Steps to Run Locally
 
-Clone the repository:
+<p style="background-color:#f9f9f9; padding:10px; border:1px solid #ddd; border-radius:5px;"> <strong>Clone the repository</strong> and navigate to the project directory: </p>
+
 git clone https://github.com/OmShirke/gRPC-Microservice-Order.git
 cd gRPC-Microservice-Order
 
