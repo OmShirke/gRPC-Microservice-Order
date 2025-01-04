@@ -19,9 +19,9 @@ Protobuf Compiler (for .proto file generation)
 Steps to Run Locally
 
 <h2>Clone this repo</h2>
-
 git clone https://github.com/OmShirke/gRPC-Microservice-Order.git
 cd gRPC-Microservice-Order
+<br>
 
 
 <h2>Build the Docker images:</h2>
